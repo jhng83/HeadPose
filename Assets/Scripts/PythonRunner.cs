@@ -20,7 +20,7 @@ public class PythonRunner : MonoBehaviour
         string environmentName = "py38";
 
         // specify the path to the Python script that you want to run
-        string scriptPath = @"C:\Users\RaPIDadmin\Headpose_est.py";
+        string scriptPath = @"C:\Users\RaPIDadmin\Desktop\Head_Pose\head_pose_Retargeting\Headpose_est.py";
 
         // specify the command to activate the Anaconda environment and run the Python script
         string command = $@"call {activateScript} {environmentName} && python -u {scriptPath}";
@@ -36,7 +36,7 @@ public class PythonRunner : MonoBehaviour
         process.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
         {
             // parse the output of the Python script
-            if (e.Data.Contains("Entry"))
+            if (e.Data.Contains("entry"))
             {
                 moveTowardsTarget = false;
                 string[] data = e.Data.Split(',');

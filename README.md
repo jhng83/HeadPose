@@ -1,4 +1,4 @@
-# HeadPose
+# Motion Retargeting using Head Pose
 
 Perform head pose estimation in python and output head angles in C# for motion retargeting of digital avatar for Unity3D. You can have a look at the demo video in this repo for an idea.
 

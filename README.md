@@ -2,6 +2,8 @@
 
 Perform head pose estimation in python and output head angles in C# for motion retargeting of digital avatar for Unity3D. You can have a look at the demo video in this repo for an idea.
 
+This repo uses a cheap camera to track user's facial markers and perform head pose estimation using the solvePNP function from openCV (Basically treating the problem as a Perspective-n-Point problem to find the head angles w.r.t to camera position). This can have many advantages over the use of traditional cumbersome wearerable sensors, including, cost, space constraint, ease of uses, among others; in many areas of research. 
+
 For Python:
 
 ver 3.8 or below (you can create a virtual environment for this and add it to your anaconda environment, I use python 3.8.12) The following version of the libraries need to be installed (remember to install it under the virtual environment)

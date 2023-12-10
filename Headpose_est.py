@@ -65,29 +65,26 @@ while cap.isOpened():
     
                         x, y = int(lm.x * img_w), int(lm.y * img_h)
     
-                        # Get the 2D Coordinates
+                        # 2D Coordinates
                         face_2d.append([x, y])
     
-                        # Get the 3D Coordinates
+                        # 3D Coordinates
                         face_3d.append([x, y, lm.z])       
                 
-                # Convert it to the NumPy array
+                # Convert to NumPy array
                 face_2d = np.array(face_2d, dtype=np.float64)
-    
-                # Convert it to the NumPy array
                 face_3d = np.array(face_3d, dtype=np.float64)
     
-                # The camera matrix
+                # Set camera parameters
                 focal_length = 1 * img_w
     
                 cam_matrix = np.array([ [focal_length, 0, img_h / 2],
                                         [0, focal_length, img_w / 2],
                                         [0, 0, 1]])
-    
-                # The Distance Matrix
+   
                 dist_matrix = np.zeros((4, 1), dtype=np.float64)
     
-                # Solve PnP
+                # Perform SolvePnP using openCV
                 success, rot_vec, trans_vec = cv2.solvePnP(face_3d, face_2d, cam_matrix, dist_matrix)
     
                 # Get rotational matrix
@@ -105,12 +102,10 @@ while cap.isOpened():
                 # Get angles
                 angles, mtxR, mtxQ, Qx, Qy, Qz = cv2.RQDecomp3x3(rmat)
     
-                # Get the y rotation degree
-                
+                # Get the pith and yaw
                 pitch = str(round(angles[0] * 360,0)-5)
                 yaw = str(round(angles[1] * 360,0))
-                
-            
+               
                 #Add the text on the image
                 cv2.putText(image, pitch +","+ yaw , (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                 print("entry," + yaw +","+ pitch)
